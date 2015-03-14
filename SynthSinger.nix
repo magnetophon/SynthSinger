@@ -1,8 +1,8 @@
-{ system ? builtins.currentSystem, stdenv, fetchgit }:
+with import <nixpkgs> {};
+
 # the block from 'let' untill 'in' is only needed untill these pkgs are
 # merged into the main distro
 let
-  pkgs = import <nixpkgs> { inherit system; };
   faust = import  pkgs/faust.nix
     {
         inherit (pkgs) stdenv coreutils fetchgit makeWrapper pkgconfig;
@@ -38,7 +38,7 @@ stdenv.mkDerivation rec {
   src = fetchgit {
     url = "https://github.com/magnetophon/VoiceOfFaust";
     rev = "f3cb04f2320b97f68d08de83140708331b624faf";
-    sha256 = "0050872ec03f8e0d003cf0d27c90d0c17a114cad9c50fb1edd3a0dce0982f149";
+    sha256 = "0s02jv2xagbqy79wf9m0n180p58b2mcfqfb948y05avzcamdg0a2";
   };
 
   runtimeInputs = [ puredata-with-plugins ];
