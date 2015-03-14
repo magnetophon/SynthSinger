@@ -52,12 +52,31 @@ stdenv.mkDerivation rec {
 
   buildPhase = ''
     faust2jack -osc classicVocoder.dsp
+    faust2jack -osc CZringmod.dsp
+    faust2jack -osc FMsinger.dsp
+    faust2jack -osc FOFvocoder.dsp
+    faust2jack -osc Karplus-StrongSinger.dsp
+    faust2jack -osc -sch -t 99999 Karplus-StrongSingerMaxi.dsp
+    faust2jack -osc PAFvocoder.dsp
+    faust2jack -osc -sch -t 99999 stringSinger.dsp
+    faust2jack -osc subSinger.dsp
+    faust2jack -osc -sch -t 99999 VocSynthFull.dsp
   '';
 
   installPhase = ''
     mkdir -p $out/bin
-    cp -r launchers/* $out/bin/
-    cp -r classicVocoder $out/bin/
+    cp launchers/* $out/bin/
+    cp classicVocoder $out/bin/
+    cp classicVocoder $out/bin/
+    cp CZringmod $out/bin/
+    cp FMsinger $out/bin/
+    cp FOFvocoder $out/bin/
+    cp Karplus-StrongSinger $out/bin/
+    cp Karplus-StrongSingerMaxi $out/bin/
+    cp PAFvocoder $out/bin/
+    cp stringSinger $out/bin/
+    cp subSinger $out/bin/
+    cp VocSynthFull $out/bin/
     mkdir $out/PureData/
     cp PureData/OscSendVoc.pd $out/PureData/OscSendVoc.pd
   '';
