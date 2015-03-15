@@ -44,7 +44,6 @@ else
   out="/usr/local"
 fi
 
-mkdir -p $out/bin                                                          && \
 # get the dir where this script is stored
 work_dir="$(dirname $0:A)/src/VoiceOfFaust"
 if [ -x $work_dir/classicVocoder ]; then
@@ -63,21 +62,21 @@ fi
 echo "Installing synths from $work_dir to $out" && \
   echo -e "\n"
 sed -i "s@pd -nodac@pd-extended -nodac@g" $work_dir/launchers/synthWrapper                                && \
-sed -i "s@../PureData/OscSendVoc.pd@$out/include/VoiceOfFaust/PureData/OscSendVoc.pd@g" launchers/synthWrapper
-mkdir -p $out/bin                                                                                         && \
-cp $work_dir/launchers/* $out/bin/                                                                            && \
-cp $work_dir/classicVocoder $out/bin/                                                                         && \
-cp $work_dir/CZringmod $out/bin/                                                                              && \
-cp $work_dir/FMsinger $out/bin/                                                                               && \
-cp $work_dir/FOFvocoder $out/bin/                                                                             && \
-cp $work_dir/Karplus-StrongSinger $out/bin/                                                                   && \
-cp $work_dir/Karplus-StrongSingerMaxi $out/bin/                                                               && \
-cp $work_dir/PAFvocoder $out/bin/                                                                             && \
-cp $work_dir/stringSinger $out/bin/                                                                           && \
-cp $work_dir/subSinger $out/bin/                                                                              && \
-#cp $work_dir/VocSynthFull $out/bin/                                                                          && \
-mkdir -p $out/include/VoiceOfFaust/PureData/                                                                                   && \
-cp $work_dir/PureData/* $out/include/VoiceOfFaust/PureData/                                                                    && \
+sed -i "s@../PureData/OscSendVoc.pd@  $out /include/VoiceOfFaust/PureData/OscSendVoc.pd@g" launchers/synthWrapper
+mkdir -p                              $out /bin                                                           && \
+cp $work_dir/launchers/*              $out /bin/                                                          && \
+cp $work_dir/classicVocoder           $out /bin/                                                          && \
+cp $work_dir/CZringmod                $out /bin/                                                          && \
+cp $work_dir/FMsinger                 $out /bin/                                                          && \
+cp $work_dir/FOFvocoder               $out /bin/                                                          && \
+cp $work_dir/Karplus-StrongSinger     $out /bin/                                                          && \
+cp $work_dir/Karplus-StrongSingerMaxi $out /bin/                                                          && \
+cp $work_dir/PAFvocoder               $out /bin/                                                          && \
+cp $work_dir/stringSinger             $out /bin/                                                          && \
+cp $work_dir/subSinger                $out /bin/                                                          && \
+#cp $work_dir/VocSynthFull            $out /bin/                                                          && \
+mkdir -p                              $out /include/VoiceOfFaust/PureData/                                && \
+cp $work_dir/PureData/*               $out /include/VoiceOfFaust/PureData/                                && \
 echo "done installing."                                                                                   && \
 echo "now run jack at low latency, run classicVocoder_PT, and sing into your microphone."                 && \
 echo "Executables with \"_PT\" in their name automatically run the pd pitchtracker and connect the input" && \
