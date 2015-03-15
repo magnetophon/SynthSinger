@@ -41,7 +41,7 @@ fi
 if [ $1 ]; then
   out="$1"
 else
-  out="/usr/local/bin/VoiceOfFaust"
+  out="/usr/local"
 fi
 
 mkdir -p $out/bin                                                          && \
@@ -63,20 +63,21 @@ fi
 echo "Installing synths from $work_dir to $out" && \
   echo -e "\n"
 sed -i "s@pd -nodac@pd-extended -nodac@g" $work_dir/launchers/synthWrapper                                && \
+sed -i "s@../PureData/OscSendVoc.pd@$out/include/VoiceOfFaust/PureData/OscSendVoc.pd@g" launchers/synthWrapper
 mkdir -p $out/bin                                                                                         && \
-cp $work_dir/launchers/* $out/                                                                            && \
-cp $work_dir/classicVocoder $out/                                                                         && \
-cp $work_dir/CZringmod $out/                                                                              && \
-cp $work_dir/FMsinger $out/                                                                               && \
-cp $work_dir/FOFvocoder $out/                                                                             && \
-cp $work_dir/Karplus-StrongSinger $out/                                                                   && \
-cp $work_dir/Karplus-StrongSingerMaxi $out/                                                               && \
-cp $work_dir/PAFvocoder $out/                                                                             && \
-cp $work_dir/stringSinger $out/                                                                           && \
-cp $work_dir/subSinger $out/                                                                              && \
-#cp $work_dir/VocSynthFull $out/                                                                          && \
-mkdir -p $out/PureData/                                                                                   && \
-cp $work_dir/PureData/* $out/PureData/                                                                    && \
+cp $work_dir/launchers/* $out/bin/                                                                            && \
+cp $work_dir/classicVocoder $out/bin/                                                                         && \
+cp $work_dir/CZringmod $out/bin/                                                                              && \
+cp $work_dir/FMsinger $out/bin/                                                                               && \
+cp $work_dir/FOFvocoder $out/bin/                                                                             && \
+cp $work_dir/Karplus-StrongSinger $out/bin/                                                                   && \
+cp $work_dir/Karplus-StrongSingerMaxi $out/bin/                                                               && \
+cp $work_dir/PAFvocoder $out/bin/                                                                             && \
+cp $work_dir/stringSinger $out/bin/                                                                           && \
+cp $work_dir/subSinger $out/bin/                                                                              && \
+#cp $work_dir/VocSynthFull $out/bin/                                                                          && \
+mkdir -p $out/include/VoiceOfFaust/PureData/                                                                                   && \
+cp $work_dir/PureData/* $out/include/VoiceOfFaust/PureData/                                                                    && \
 echo "done installing."                                                                                   && \
 echo "now run jack at low latency, run classicVocoder_PT, and sing into your microphone."                 && \
 echo "Executables with \"_PT\" in their name automatically run the pd pitchtracker and connect the input" && \
