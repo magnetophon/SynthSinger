@@ -77,7 +77,7 @@ faust2jack -osc subSinger.dsp                                              && \
 # doesn't compile on most systems, too big:                                && \
 #faust2jack -osc -sch -t 99999 VocSynthFull.dsp                            && \
 echo "All synths built."                                                   && \
-echo "Now run \"sudo scripts/install_synths.sh\""
+echo "Now run \"sudo ./scripts/install_synths.sh\""
 echo "or, if you want to specify an instalation dir:"
-echo "\"sudo scripts/install_synths.sh /path/to/install/to/\""
+echo "\"sudo ./scripts/install_synths.sh /path/to/install/to/\""
 echo "The default instalation dir is \"/usr/local/VoiceOfFaust\"."
