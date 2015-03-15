@@ -60,13 +60,13 @@ stdenv.mkDerivation rec {
     faust2jack -osc PAFvocoder.dsp
     faust2jack -osc -sch -t 99999 stringSinger.dsp
     faust2jack -osc subSinger.dsp
-    faust2jack -osc -sch -t 99999 VocSynthFull.dsp
+    # doesn't compile on most systems, too big:
+    #faust2jack -osc -sch -t 99999 VocSynthFull.dsp
   '';
 
   installPhase = ''
     mkdir -p $out/bin
     cp launchers/* $out/bin/
-    cp classicVocoder $out/bin/
     cp classicVocoder $out/bin/
     cp CZringmod $out/bin/
     cp FMsinger $out/bin/
@@ -76,7 +76,7 @@ stdenv.mkDerivation rec {
     cp PAFvocoder $out/bin/
     cp stringSinger $out/bin/
     cp subSinger $out/bin/
-    cp VocSynthFull $out/bin/
+    #cp VocSynthFull $out/bin/
     mkdir $out/PureData/
     cp PureData/OscSendVoc.pd $out/PureData/OscSendVoc.pd
   '';
