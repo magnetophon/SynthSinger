@@ -45,7 +45,7 @@ else
 fi
 
 # get the dir where this script is stored
-work_dir="$(dirname $0:A)/src/VoiceOfFaust"
+work_dir="$(dirname $0:A)/src/VoiceOfFaust/"
 if [ -x $work_dir/classicVocoder ]; then
   echo "Synths found."
   echo -e "\n"
