@@ -37,8 +37,8 @@ stdenv.mkDerivation rec {
 
   src = fetchgit {
     url = "https://github.com/magnetophon/VoiceOfFaust";
-    rev = "f3cb04f2320b97f68d08de83140708331b624faf";
-    sha256 = "0s02jv2xagbqy79wf9m0n180p58b2mcfqfb948y05avzcamdg0a2";
+    rev = "15fca6df81592c35e60b34940dcf06ab88647155";
+    sha256 = "c2ac7f9693e4e226b3ffb2bc7bfa4c3065c2f83f72801f2d6f00800ae8f12929";
   };
 
   runtimeInputs = [ puredata-with-plugins ];
