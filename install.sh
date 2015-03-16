@@ -35,14 +35,14 @@ while true; do
           nix-env -i git                                                   && \
           cd /tmp/                                                         && \
           git clone https://github.com/magnetophon/SynthSinger.git         && \
-          nix-env -f faust/SynthSinger/SynthSinger.nix -i SynthSinger      && \
+          nix-env -f SynthSinger/SynthSinger.nix -i SynthSinger            && \
           break;;
         [Nn]* ) exit;;
         * ) echo "Please answer yes or no.";;
     esac
 done
 if [ $(which classicVocoder) ]; then
-  echo "All synths built."                                                   && \
+  echo "All synths built."
   echo "Now run \"sudo install_synths.sh\""
   echo "or, if you want to specify an instalation dir:"
   echo "\"sudo install_synths.sh\ /path/to/install/to/""
