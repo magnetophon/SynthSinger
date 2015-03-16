@@ -29,21 +29,21 @@ while true; do
         [Yy]* ) 
           echo "installing the nix package manager, see here for more info:"
           echo "http://nixos.org/nix/manual/#chap-quick-start"
-          curl https://nixos.org/nix/install | sh && \
-          echo 'source ~/.nix-profile/etc/profile.d/nix.sh' >> ~/.profile
-          source ~/.nix-profile/etc/profile.d/nix.sh && \
-          nix-env -i git && \
-          cd /tmp/ && \
-          git clone https://github.com/magnetophon/SynthSinger.git && \
-          nix-env -f faust/SynthSinger/SynthSinger.nix -i SynthSinger && \
+          curl https://nixos.org/nix/install | sh                          && \
+          echo 'source ~/.nix-profile/etc/profile.d/nix.sh' >> ~/.profile  && \
+          . ~/.nix-profile/etc/profile.d/nix.sh                            && \
+          nix-env -i git                                                   && \
+          cd /tmp/                                                         && \
+          git clone https://github.com/magnetophon/SynthSinger.git         && \
+          nix-env -f faust/SynthSinger/SynthSinger.nix -i SynthSinger      && \
           break;;
         [Nn]* ) exit;;
         * ) echo "Please answer yes or no.";;
     esac
 done
 if [ $(which classicVocoder) ]; then
-  echo "all synths built."                                                   && \
-  echo "now run \"sudo install_synths.sh\""
+  echo "All synths built."                                                   && \
+  echo "Now run \"sudo install_synths.sh\""
   echo "or, if you want to specify an instalation dir:"
   echo "\"sudo install_synths.sh\ /path/to/install/to/""
 fi
