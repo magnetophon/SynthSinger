@@ -7,6 +7,7 @@
 
 # check if we are on linux
 
+work_dir="$(dirname $0:A)"
 faust_version=$(faust -v | grep Version | tr -dc '[:digit:]')
 #if [[$faust_version  -gt 967]]  && [[$(which pd)]]; then
 if [ $faust_version  -gt 967 ]; then
@@ -21,29 +22,34 @@ echo -e "\n"
 echo "For a properly working VoiceOfFaust, you need the git version of Faust."
 echo "You also need either puredata with mrpeach, or pd-extended"
 echo "If you want to install those manually, type no to exit this script, and try again later."
-echo "If you want to install those automatically, type yes. It will be a big download! (+/- 800Mb unpacked)"
+echo "If you want to install those automatically, type yes. It will be a big download! (1.1Gb unpacked)"
 echo -e "\n"
 while true; do
   read -p "Do you want to install everything automatically?" yn
     case $yn in
         [Yy]* ) 
+          echo -e "\n"
           echo "installing the nix package manager, see here for more info:"
           echo "http://nixos.org/nix/manual/#chap-quick-start"
-          curl https://nixos.org/nix/install | sh                          && \
-          echo 'source ~/.nix-profile/etc/profile.d/nix.sh' >> ~/.profile  && \
-          . ~/.nix-profile/etc/profile.d/nix.sh                            && \
-          nix-env -i git                                                   && \
-          cd /tmp/                                                         && \
-          git clone https://github.com/magnetophon/SynthSinger.git         && \
-          nix-env -f SynthSinger/SynthSinger.nix -i SynthSinger            && \
+          echo -e "\n"
+          curl https://nixos.org/nix/install | sh              && \
+          . ~/.nix-profile/etc/profile.d/nix.sh                && \
+          nix-env -f $work_dir/SynthSinger.nix -i SynthSinger  && \
           break;;
         [Nn]* ) exit;;
         * ) echo "Please answer yes or no.";;
     esac
 done
 if [ $(which classicVocoder) ]; then
-  echo "All synths built."
-  echo "Now run \"sudo install_synths.sh\""
-  echo "or, if you want to specify an instalation dir:"
-  echo "\"sudo install_synths.sh\ /path/to/install/to\""
+  echo -e "\n"
+  echo "Everything installed successfully."
+  echo -e "\n"
+  echo "You now have:"
+  echo "\". ~/.nix-profile/etc/profile.d/nix.sh\""
+  echo "in your ~/.profile,"
+  echo "Unfortunately, not every linux sources the profile properly."
+  echo -e "\n"
+  echo "Now run jack at low latency, run classicVocoder_PT, and sing into your microphone."                          && \
+  echo "Executables with \"_PT\" in their name automatically run the needed pd pitchtracker and connect the input."  && \
+  echo "If you want more flexibility, run the ones without \"_PT\""
 fi
