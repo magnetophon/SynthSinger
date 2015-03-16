@@ -79,5 +79,5 @@ echo -e "\n"                                                                && \
 echo "Now run \"sudo ./scripts/install_synths.sh\""                         && \
 echo "or, if you want to specify an instalation dir:"                       && \
 echo "\"sudo ./scripts/install_synths.sh /path/to/install/to/\""            && \
-echo "The default instalation dir is \"/usr/local/VoiceOfFaust\"."          && \
+echo "The default instalation dir is \"/usr/local\"."          && \
 echo -e "\n"
