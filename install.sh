@@ -45,5 +45,5 @@ if [ $(which classicVocoder) ]; then
   echo "All synths built."
   echo "Now run \"sudo install_synths.sh\""
   echo "or, if you want to specify an instalation dir:"
-  echo "\"sudo install_synths.sh\ /path/to/install/to/""
+  echo "\"sudo install_synths.sh\ /path/to/install/to\""
 fi
