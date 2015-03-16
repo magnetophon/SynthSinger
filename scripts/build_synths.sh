@@ -45,39 +45,39 @@ fi
 
 # get the dir where this script is stored
 work_dir="$(dirname $0:A)"
-echo "$work_dir"
-ls
 cd $work_dir/
 if [ ! -d  src/ ]; then
-  ls
   mkdir -p src/                                                    && \
   cd src/                                                          && \
   git clone https://github.com/magnetophon/VoiceOfFaust.git
   cd ..
 fi
 
-# todo: check for 64 bit, and if so, build from source                     && \
-# for now, the pd built in pitchtracker will have to do.                   && \
-#curl -sS http://www.katjaas.nl/helmholtz/helmholtz%7E.zip > helmholtz.zip && \
-#unzip helmholtz.zip                                                       && \
-#rm helmholtz.zip                                                          && \
-#mkdir -p $work_dir/PureData/                                              && \
-#cp -r helmholtz~/helmholtz~/* $work_dir/PureData/                         && \
-cd src/VoiceOfFaust                                                        && \
-echo "Building synths, done with:"                                         && \
-faust2jack -osc classicVocoder.dsp                                         && \
-faust2jack -osc CZringmod.dsp                                              && \
-faust2jack -osc FMsinger.dsp                                               && \
-faust2jack -osc FOFvocoder.dsp                                             && \
-faust2jack -osc Karplus-StrongSinger.dsp                                   && \
-faust2jack -osc -sch -t 99999 Karplus-StrongSingerMaxi.dsp                 && \
-faust2jack -osc PAFvocoder.dsp                                             && \
-faust2jack -osc -sch -t 99999 stringSinger.dsp                             && \
-faust2jack -osc subSinger.dsp                                              && \
-# doesn't compile on most systems, too big:                                && \
-#faust2jack -osc -sch -t 99999 VocSynthFull.dsp                            && \
-echo "All synths built."                                                   && \
-echo "Now run \"sudo ./scripts/install_synths.sh\""
-echo "or, if you want to specify an instalation dir:"
-echo "\"sudo ./scripts/install_synths.sh /path/to/install/to/\""
-echo "The default instalation dir is \"/usr/local/VoiceOfFaust\"."
+# todo: check for 64 bit, and if so, build from source                      && \
+# for now, the pd built in pitchtracker will have to do.                    && \
+#curl -sS http://www.katjaas.nl/helmholtz/helmholtz%7E.zip > helmholtz.zip  && \
+#unzip helmholtz.zip                                                        && \
+#rm helmholtz.zip                                                           && \
+#mkdir -p $work_dir/PureData/                                               && \
+#cp -r helmholtz~/helmholtz~/* $work_dir/PureData/                          && \
+cd src/VoiceOfFaust                                                         && \
+echo "Building synths, done with:"                                          && \
+faust2jack -osc classicVocoder.dsp                                          && \
+faust2jack -osc CZringmod.dsp                                               && \
+faust2jack -osc FMsinger.dsp                                                && \
+faust2jack -osc FOFvocoder.dsp                                              && \
+faust2jack -osc Karplus-StrongSinger.dsp                                    && \
+faust2jack -osc -sch -t 99999 Karplus-StrongSingerMaxi.dsp                  && \
+faust2jack -osc PAFvocoder.dsp                                              && \
+faust2jack -osc -sch -t 99999 stringSinger.dsp                              && \
+faust2jack -osc subSinger.dsp                                               && \
+# doesn't compile on most systems, too big:                                 && \
+#faust2jack -osc -sch -t 99999 VocSynthFull.dsp                             && \
+echo -e "\n"                                                                && \
+echo "All synths built."                                                    && \
+echo -e "\n"                                                                && \
+echo "Now run \"sudo ./scripts/install_synths.sh\""                         && \
+echo "or, if you want to specify an instalation dir:"                       && \
+echo "\"sudo ./scripts/install_synths.sh /path/to/install/to/\""            && \
+echo "The default instalation dir is \"/usr/local/VoiceOfFaust\"."          && \
+echo -e "\n"
